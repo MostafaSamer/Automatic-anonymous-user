@@ -5,7 +5,7 @@ This Project has API to
 - list all active user
 
 Feature
-- if the guest user didn't active for a pireod of time (default is hour) he expired (not deleted)
+- if the guest user didn't active for a period of time (default is hour) he expired (not deleted)
 
 Installing
 - clone the repo
