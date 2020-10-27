@@ -1,14 +1,14 @@
 # Automatic-anonymous-user
 
 This Project has API to
-- add guest user
-- list all active user
+- Add guest user
+- List all active user
 
 Feature
-- if the guest user didn't be active for a period (An Hour) he will be expired (Not Deleted)
+- If the guest user didn't be active for a period (An Hour) he will be expired (Not Deleted)
 
 Installing
-- clone the repo
-- run 'npm i'
-- run  'node app'
-- use the collection in the API folder for testing
+- Clone the repo
+- Run 'npm i'
+- Run  'node app'
+- Use the collection in the API folder for testing
