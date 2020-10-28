@@ -2,6 +2,13 @@ var guestModel = require('../model/guest')
 
 let createNewGuest = async (req, res)=> {
     try {
+        // check if it is an old user
+        let user = await guestModel.findOnce({ ip: req.ip })
+        if(user) {
+            await makeAnAction(user._id)
+            res.status(200).json({success: 1, data: user, msg: "Succesfull"})
+        }
+        // create
         let name;
         if(req.body.name) {
             name = req.body.name;
@@ -9,7 +16,8 @@ let createNewGuest = async (req, res)=> {
             name = await makeName()
         }
         let newGuest = await new guestModel({
-            name: name
+            name: name,
+            ip: req.ip
         }).save()
         res.status(200).json({success: 1, data: newGuest, msg: "Succesfull"})
     } catch (error) {
@@ -29,15 +37,20 @@ let getAllCurrentGuests = async (req, res)=> {
 
 // new action
 let someActoion = async (req, res)=> {
-    if(req.body.id) {
-        let id = req.body.id
-        if(makeAnAction(id)) {
-            res.status(200).json({success: 1, msg: "Succesfull"})
+    if(!req.body.token) {
+        if(req.body.id) {
+            let newIP = req.ip
+            let id = req.body.id
+            if(makeAnAction(id)) {
+                res.status(200).json({success: 1, msg: "Succesfull"})
+            } else {
+                res.status(500).send({success: 0, msg: ''})
+            }
         } else {
-            res.status(500).send({success: 0, msg: ''})
+            createNewGuest(req, res)
         }
     } else {
-        createNewGuest(req, res)
+        // this is a auth call
     }
 }
 

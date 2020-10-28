@@ -5,6 +5,9 @@ This Project has API to
 - List all active user
 
 Feature
+- User can give name before taking action
+- if new anonymous user didn't give name **First Visit** will generate randome name for him
+- If he was registerd before he will contine using his old name
 - If the guest user didn't be active for a period **An Hour** he will be expired **Not Deleted**
 
 Installing

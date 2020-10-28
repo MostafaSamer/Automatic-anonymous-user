@@ -11,6 +11,9 @@ const guestSchema = mongoose.Schema({
     lastReq: {
         type: Date,
         default: new Date()
+    },
+    ip: {
+        type: String,
     }
 }, {
     timestamp: true
